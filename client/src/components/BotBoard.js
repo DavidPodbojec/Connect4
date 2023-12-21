@@ -43,35 +43,37 @@ function BotBoard() {
          }, 700)
         
 
+      } else {
+        setCurrentPlayer(currentPlayer === 1 ? 2 : 1);
+
+        async function fetchData() {
+          const res = await axios.post('http://127.0.0.1:5000/api', {"matrix": newBoard})
+          const updatedBoard = JSON.parse(res.data.board)
+          
+          setBoard(updatedBoard)
+  
+          if (checkWin(updatedBoard, 2)) {
+            changeWin(true)
+            setClicksDisabled(true)
+            setTimeout(() => {
+              setPopupOpen(true)
+             }, 900)
+          } else {
+            setCurrentPlayer(1)
+            setTimeout(() => {
+              setClicksDisabled(false)
+  
+  
+            }, 500)
+  
+          }
+          if (noMoves(updatedBoard) && win==false) {
+            setZeroMoves(true)
+          }          
+    }
+    fetchData()
+
       } 
-      setCurrentPlayer(currentPlayer === 1 ? 2 : 1);
-      async function fetchData() {
-        const res = await axios.post('http://127.0.0.1:5000/api', {"matrix": newBoard})
-        const updatedBoard = JSON.parse(res.data.board)
-        
-        setBoard(updatedBoard)
-
-        if (noMoves(updatedBoard)) {
-          setZeroMoves(true)
-        }
-
-        if (checkWin(updatedBoard, 2)) {
-          changeWin(true)
-          setClicksDisabled(true)
-          setTimeout(() => {
-            setPopupOpen(true)
-           }, 900)
-        } else {
-          setCurrentPlayer(1)
-          setTimeout(() => {
-            setClicksDisabled(false)
-
-
-          }, 500)
-
-        }          
-  }
-  fetchData()
    
     } else {
       setClicksDisabled(false)
