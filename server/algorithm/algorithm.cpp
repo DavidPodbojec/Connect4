@@ -53,7 +53,7 @@ bool nomovesleft() {
 }
 
 bool wins(char c) {
-    // Horizontal
+    // horizontal
     for (int i = 0; i < 6; i++) {
         for (int j = 0; j < 4; j++) {
             if (board[i][j] == c && board[i][j + 1] == c && board[i][j + 2] == c && board[i][j + 3] == c) {
@@ -62,7 +62,7 @@ bool wins(char c) {
         }
     }
 
-    // Vertical
+    // vertical
     for (int j = 0; j < 7; j++) {
         for (int i = 0; i < 3; i++) {
             if (board[i][j] == c && board[i + 1][j] == c && board[i + 2][j] == c && board[i + 3][j] == c) {
@@ -71,7 +71,7 @@ bool wins(char c) {
         }
     }
 
-    // Diagonal
+    // diagonal
     for (int i = 0; i < 3; i++) {
         for (int j = 0; j < 4; j++) {
             if (board[i][j] == c && board[i + 1][j + 1] == c && board[i + 2][j + 2] == c && board[i + 3][j + 3] == c) {
@@ -109,7 +109,7 @@ void Remove(int col) {
 }
 
 int count2s(char c) {
-    // Horizontal
+    // horizontal
     int count = 0;
     for (int i = 0; i < 6; i++) {
         for (int j = 0; j < 6; j++) {
@@ -121,7 +121,7 @@ int count2s(char c) {
         }
     }
 
-    // Vertical
+    // vertical
     for (int j = 0; j < 7; j++) {
         for (int i = 1; i < 5; i++) {
             if (board[i - 1][j] == '0' && board[i][j] == c && board[i + 1][j] == c) {
@@ -130,7 +130,7 @@ int count2s(char c) {
         }
     }
 
-    // Diagonal
+    // diagonal
     for (int i = 0; i < 5; i++) {
         for (int j = 0; j < 6; j++) {
             if (j > 0 && i > 0 && board[i - 1][j - 1] == '0' && board[i][j] == c && board[i + 1][j + 1] == c) {
@@ -154,7 +154,7 @@ int count2s(char c) {
 }
 
 int count3s(char c) {
-    // Horizontal
+    // horizontal
     int count = 0;
     for (int i = 0; i < 6; i++) {
         for (int j = 0; j < 5; j++) {
@@ -166,7 +166,7 @@ int count3s(char c) {
         }
     }
 
-    // Vertical
+    // vertical
     for (int j = 0; j < 7; j++) {
         for (int i = 1; i < 4; i++) {
             if (board[i - 1][j] == '0' && board[i][j] == c && board[i + 1][j] == c && board[i + 2][j] == c) {
@@ -175,7 +175,7 @@ int count3s(char c) {
         }
     }
 
-    // Diagonal
+    // diagonall
     for (int i = 0; i < 4; i++) {
         for (int j = 0; j < 5; j++) {
             if (j > 0 && i > 0 && board[i - 1][j - 1] == '0' && board[i][j] == c && board[i + 1][j + 1] == c && board[i + 2][j + 2] == c) {
@@ -298,7 +298,6 @@ int main(int argc, char* argv[]){
     
     } 
 	
-	//turn the board
 	int x_index = 0;
 	int y_index = 0;
 	for (int i = 0; i < 6; i++ ) {
